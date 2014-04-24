@@ -8,17 +8,18 @@
 ## (in this case calculating the inverse of a matrix)
 
 makeCacheMatrix <- function(x = matrix()) {
-        m <- NULL
+        m <- NULL # sets the cached calculation to NULL when new function called
         set <- function(y) {
                 x <<- y
                 m <<- NULL
-        }
-        get <- function() x
-        setinverse <- function(solve) m <<- solve
-        getinverse <- function() m
+        } # this inserts the new standard matrix to the cache and sets the cached calculation to NULL
+        get <- function() x # this retrieves the standard matrix from the cache
+        setinverse <- function(solve) m <<- solve # this inserts a given inverse matrix to the cache
+                                                  # either manually using $setinverse or via cacheSolve
+        getinverse <- function() m # this retrieves the calculated inverse matrix from the cache
         list(set = set, get = get,
              setinverse = setinverse,
-             getinverse = getinverse)
+             getinverse = getinverse) # sets up the list to return values of the special matrix
 
 }
 
